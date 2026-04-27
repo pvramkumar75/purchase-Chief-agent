@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase AI Chief</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+    <div class="bg-grid"></div>
+
+    <div class="app-shell">
+        <aside class="panel panel-left">
+            <div class="brand-block">
+                <p class="brand-eyebrow">Procurement Command</p>
+                <h1 class="brand-title">Purchase AI Chief</h1>
+                <p class="brand-subtitle">Industrial sourcing intelligence with memory and document context.</p>
+            </div>
+
+            <button id="newChatBtn" class="btn btn-primary" type="button">Start New Chat</button>
+
+            <div class="chat-list-wrap">
+                <p class="section-label">Conversations</p>
+                <div id="chatList" class="chat-list"></div>
+            </div>
+        </aside>
+
+        <main class="panel panel-main">
+            <header class="main-header">
+                <div>
+                    <p class="header-eyebrow">Chief Buyer Console</p>
+                    <h2 id="chatTitle" class="chat-title">Active Conversation</h2>
+                    <p id="chatMeta" class="chat-meta">Use this assistant for costing, compliance, EXIM, vendor strategy, and purchase operations.</p>
+                </div>
+                <div id="statusPill" class="status-pill">Initializing</div>
+            </header>
+
+            <section id="messageFeed" class="message-feed" aria-live="polite"></section>
+
+            <footer class="composer-card">
+                <div class="composer-toolbar">
+                    <label class="switch-row" for="useKnowledgeToggle">
+                        <input id="useKnowledgeToggle" type="checkbox" checked />
+                        <span>Use uploaded attachment knowledge</span>
+                    </label>
+                    <p class="toolbar-note">Tip: upload RFQs, specifications, costing sheets, or process notes for grounded answers.</p>
+                </div>
+
+                <div class="composer-input-row">
+                    <textarea
+                        id="messageInput"
+                        rows="3"
+                        maxlength="12000"
+                        placeholder="Ask about vendor strategy, machine-hour costing, EXIM compliance, raw material intelligence, or drawing-linked sourcing..."
+                    ></textarea>
+                    <button id="sendBtn" class="btn btn-send" type="button">Send</button>
+                </div>
+            </footer>
+        </main>
+
+        <aside class="panel panel-right">
+            <div class="knowledge-head">
+                <p class="section-label">Knowledge Bank</p>
+                <h3>Attachment Intelligence</h3>
+                <p>Upload files for chat-specific context retrieval.</p>
+            </div>
+
+            <label id="dropZone" for="fileInput" class="upload-dropzone">
+                <span class="drop-title">Drop files here or click to upload</span>
+                <span class="drop-subtitle">Supports TXT, PDF, DOCX, CSV, JSON, YAML, XML</span>
+            </label>
+            <input id="fileInput" type="file" multiple />
+
+            <div class="attachments-wrap">
+                <p class="section-label">Current Chat Files</p>
+                <div id="attachmentsList" class="attachments-list"></div>
+            </div>
+        </aside>
+    </div>
+
+    <template id="messageTemplate">
+        <article class="message-row">
+            <div class="avatar"></div>
+            <div class="message-card">
+                <header class="message-header">
+                    <strong class="message-role"></strong>
+                    <time class="message-time"></time>
+                </header>
+                <p class="message-text"></p>
+            </div>
+        </article>
+    </template>
+
+    <script src="/static/app.js" defer></script>
+</body>
+</html>
