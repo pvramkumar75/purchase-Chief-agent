@@ -1,4 +1,4 @@
-from app.main import api_app
+from app.main import web_app
 
 # Explicit top-level ASGI export for Vercel Python runtime detection.
-app = api_app
+app = web_app
