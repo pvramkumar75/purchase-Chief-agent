@@ -1,8 +1,8 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 
-
 class ChatCreateRequest(BaseModel):
-    title: str | None = Field(default=None, max_length=120)
+    title: Optional[str] = Field(default=None, max_length=120)
 
 
 class MessageRequest(BaseModel):
@@ -31,7 +31,7 @@ class AttachmentResponse(BaseModel):
     chat_id: str
     original_name: str
     stored_path: str
-    mime_type: str | None
+    mime_type: Optional[str]
     char_count: int
     created_at: str
 

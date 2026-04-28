@@ -1,5 +1,6 @@
 from uuid import uuid4
 import sqlite3
+from typing import Optional
 
 from .db import get_conn, utc_now_iso
 from .knowledge import build_search_query
@@ -9,7 +10,7 @@ def _row_to_dict(row):
     return dict(row) if row else None
 
 
-def create_chat(title: str | None = None) -> dict:
+def create_chat(title: Optional[str] = None) -> dict:
     chat_id = str(uuid4())
     timestamp = utc_now_iso()
     chat_title = (title or "New Purchase Session").strip() or "New Purchase Session"
@@ -26,7 +27,7 @@ def create_chat(title: str | None = None) -> dict:
     return get_chat(chat_id)
 
 
-def get_chat(chat_id: str) -> dict | None:
+def get_chat(chat_id: str) -> Optional[dict]:
     with get_conn() as conn:
         row = conn.execute(
             """

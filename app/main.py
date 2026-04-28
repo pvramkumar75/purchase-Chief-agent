@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 from uuid import uuid4
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
@@ -68,7 +69,7 @@ def get_chats() -> list[dict]:
 
 
 @api_app.post("/chats", response_model=ChatResponse)
-def post_chat(payload: ChatCreateRequest | None = None) -> dict:
+def post_chat(payload: Optional[ChatCreateRequest] = None) -> dict:
     title = payload.title if payload else None
     chat = create_chat(title)
     chat["message_count"] = 0
